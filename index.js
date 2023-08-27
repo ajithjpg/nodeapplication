@@ -1,23 +1,35 @@
 const express = require("express");
-
+const morgan = require("morgan");
 const project = require('./components/routes/project.route');
 const task = require('./components/routes/task.route');
 const users = require('./components/routes/user.route');
+
+const app = express();
+app.use(express.json());
+
+// app.use(morgan("combined"));
+// app.use(
+//   morgan(":method :url :status :res[content-length] - :response-time ms")
+// );
+ 
 
 
 
 // const cors = require('cors');
 
 
-const notfount ='404 Page Not Found'
-const app = express();
+const notfount = '404 Page Not Found'
+
 app.use(express.json());
 
 app.use('/project', project);
 app.use('/task', task);
 app.use('/users', users);
 
-app.get('/', (req, res) => res.send('Sample Node API Version1'));
+app.get('/', (req, res) => {
+  res.status(200)
+  res.send('Sample Node API Version1');
+})
 
 app.get('*', (req, res) => {
   res.status(404)
@@ -33,9 +45,7 @@ const hostname = '127.0.0.1';
 
 
 
-
 app.listen(port, () => {
+  
   console.log(`app listening on port ${hostname}:${port}`);
 });
-
-module.exports = { app };
