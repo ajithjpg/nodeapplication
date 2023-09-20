@@ -3,15 +3,20 @@ const morgan = require("morgan");
 const project = require('./components/routes/project.route');
 const task = require('./components/routes/task.route');
 const users = require('./components/routes/user.route');
-
 const app = express();
 app.use(express.json());
-
+const cors = require('cors');
+const bcrypt = require('bcrypt');
+const bodyParser = require('body-parser');
 // app.use(morgan("combined"));
 // app.use(
 //   morgan(":method :url :status :res[content-length] - :response-time ms")
 // );
  
+const corsOptions = {
+  "origin": "*",
+  optionsSuccessStatus: 200
+}
 
 
 
@@ -20,7 +25,12 @@ app.use(express.json());
 
 const notfount = '404 Page Not Found'
 
+
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+
 
 app.use('/project', project);
 app.use('/task', task);
