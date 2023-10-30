@@ -37,8 +37,8 @@ app.use('/task', task);
 app.use('/users', users);
 
 app.get('/', (req, res) => {
-  res.status(200)
-  res.send('Sample Node API Version1');
+  res.status(200).json('Sample Node API Version1')
+ 
 })
 
 app.get('*', (req, res) => {

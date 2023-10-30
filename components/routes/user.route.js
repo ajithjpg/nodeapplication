@@ -4,9 +4,9 @@ const{signinroute,registerroute} = require('../controller/user')
 
 route.post('/signin',signinroute)
 route.post('/register',registerroute)
-route.get('/',(req,res)=>{
+// route.get('/',(req,res)=>{
 
-    res.send('users')
-})
+//     res.send('users')
+// })
 
 module.exports = route

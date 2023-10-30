@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true });
-
-router.get('/',(req,res)=>{
-      
-    res.send('project')
-})
+const{createproject} = require('../controller/project')
+router.post('/create',createproject)
 
 module.exports = router;
